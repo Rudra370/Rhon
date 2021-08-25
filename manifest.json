@@ -1,0 +1,24 @@
+{
+  
+  "manifest_version":2,
+  "name":"Rhon",
+  "version":"0.0.1",
+  "description":"Keep your tabs near your eye without them eating ram",
+  "author":"Rudra",
+  "icons":{
+    "128":"images/Rhon.png"
+  },
+  
+  "browser_action":{
+    "default_popup":"popup.html",
+    "default_icon":"images/Rhon.png",
+    "default_title":"Timezone finder"
+
+  },
+  "permissions":["activeTab","tabs","storage"],
+  
+  "background":{
+    "scripts":["main.js"]
+  }
+  
+}

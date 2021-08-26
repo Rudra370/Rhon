@@ -12,7 +12,7 @@
   "browser_action":{
     "default_popup":"popup.html",
     "default_icon":"images/Rhon.png",
-    "default_title":"Timezone finder"
+    "default_title":"Rhon"
 
   },
   "permissions":["activeTab","tabs","storage"],

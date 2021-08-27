@@ -152,6 +152,15 @@ function getContentItemDiv(name, tab) {
   let contentItemText = document.createElement("h6");
   contentItemText.innerHTML = tab.title;
 
+  let copyIcon = document.createElement("img");
+  copyIcon.className = "copy-icon";
+  copyIcon.src = chrome.extension.getURL("images/copy.svg");
+  copyIcon.alt = "copy icon";
+  copyIcon.addEventListener("click", function (e) {
+    copyToClipboard(tab.url);
+    e.stopPropagation();
+  });
+
   let contentItemDelete = document.createElement("img");
   contentItemDelete.className = "delete-icon";
   contentItemDelete.alt = "del";
@@ -170,6 +179,7 @@ function getContentItemDiv(name, tab) {
 
   contentItemDiv.appendChild(contentItemIcon);
   contentItemDiv.appendChild(contentItemText);
+  contentItemDiv.appendChild(copyIcon);
   contentItemDiv.appendChild(contentItemDelete);
 
   contentItemDiv.addEventListener("click", function (e) {
@@ -250,4 +260,17 @@ String.prototype.capitalize = function () {
 
 function saveData() {
   chrome.storage.sync.set({ data: data["data"] });
+}
+
+function copyToClipboard(name) {
+  document.getElementById("toast").classList.toggle("show");
+  setTimeout(function () {
+    document.getElementById("toast").classList.toggle("show");
+  }, 1000);
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.value = name;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
 }
